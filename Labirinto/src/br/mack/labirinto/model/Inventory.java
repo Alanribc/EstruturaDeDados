@@ -2,41 +2,56 @@ package br.mack.labirinto.model;
 
 import br.mack.labirinto.ds.Stack;
 
+/**
+ * Representa o inventário de chaves do jogador usando pilha LIFO.
+ */
 public class Inventory {
     private final Stack<Character> keys;
 
+    /**
+     * Cria um inventário com capacidade máxima de chaves.
+     */
     public Inventory(int capacity) {
         keys = new Stack<>(capacity);
     }
 
-    public boolean addKey(char key) {
-        if (keys.isFull()) return false;
-        keys.push(key);
-        return true;
-    }
-
-    public boolean canOpen(char door) {
-        if (keys.isEmpty()) return false;
-        return keys.peek() == Character.toLowerCase(door);
-    }
-
-    public void openDoor() {
-        if (!keys.isEmpty()) keys.pop();
-    }
-
-    public void print() {
-        System.out.print("Chaves na pilha: ");
-        if (keys.isEmpty()) {
-            System.out.println("[vazio]");
-        } else {
-            for (int i = 0; i < keys.size(); i++) {
-                System.out.print(keys.peek() + " ");
-            }
-            System.out.println();
+    /**
+     * Adiciona uma chave no inventário.
+     */
+    public void pushKey(char key) {
+        if (keys.size() >= keys.capacity()) {
+            System.out.println("Inventário cheio! Não é possível pegar a chave " + key);
+            return;
         }
+        keys.push(key);
+        System.out.println("Pegou a chave " + key);
     }
 
-    public int remainingKeys() {
+    /**
+     * Retorna a chave do topo da pilha sem removê-la.
+     */
+    public char peekKey() {
+        return keys.peek();
+    }
+
+    /**
+     * Remove e retorna a chave do topo da pilha.
+     */
+    public char popKey() {
+        return keys.pop();
+    }
+
+    /**
+     * Verifica se o inventário está vazio.
+     */
+    public boolean isEmpty() {
+        return keys.isEmpty();
+    }
+
+    /**
+     * Retorna a quantidade de chaves no inventário.
+     */
+    public int size() {
         return keys.size();
     }
 }

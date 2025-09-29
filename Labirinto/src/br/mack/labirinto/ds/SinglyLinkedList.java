@@ -1,5 +1,11 @@
 package br.mack.labirinto.ds;
 
+/**
+ * Implementação simples de uma lista encadeada simples (Singly Linked List).
+ * Cada elemento é armazenado em um nó, que aponta para o próximo.
+ *
+ * @param <T> tipo dos elementos armazenados na lista
+ */
 public class SinglyLinkedList<T> {
     private static class Node<T> {
         T value;
@@ -9,6 +15,11 @@ public class SinglyLinkedList<T> {
 
     private Node<T> head = null;
 
+    /**
+     * Adiciona um novo elemento ao final da lista.
+     *
+     * @param value valor a ser adicionado
+     */
     public void add(T value) {
         Node<T> newNode = new Node<>(value);
         if (head == null) head = newNode;
@@ -19,6 +30,9 @@ public class SinglyLinkedList<T> {
         }
     }
 
+    /**
+     * Imprime todos os elementos da lista.
+     */
     public void printAll() {
         Node<T> current = head;
         while (current != null) {

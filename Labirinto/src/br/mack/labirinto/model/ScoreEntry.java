@@ -1,3 +1,6 @@
+//Alan Ribeiro do Carmo 10428496
+//Erik Yutaka Takara 10427684
+
 package br.mack.labirinto.model;
 
 import br.mack.labirinto.util.Sorts;
